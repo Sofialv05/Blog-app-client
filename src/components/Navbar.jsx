@@ -1,10 +1,10 @@
 export default function Navbar() {
   return (
-    <nav className="bg-white flex items-center justify-center py-4 px-4">
-      <div className="max-w-screen-xl flex mx-auto items-center justify-between w-full">
+    <nav className="bg-white flex items-center justify-center py-4 px-4 fixed top-0 right-0 left-0 shadow-lg shadow-grey-700">
+      <div className="flex mx-20 items-center justify-between w-full">
         <div className="flex items-center">
-          <a href="#" className="text-primary text-lg font-bold">
-            Blog
+          <a href="#" className="text-primary text-2xl font-bold">
+            Random Blog
           </a>
         </div>
 
@@ -32,7 +32,7 @@ export default function Navbar() {
             name="keyword"
             id="search"
             placeholder="Search..."
-            className="block w-60 p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 px-4 py-2"
+            className="block w-60 p-2 pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary px-4 py-2"
           />
           <div className="pl-3">
             <a href="">

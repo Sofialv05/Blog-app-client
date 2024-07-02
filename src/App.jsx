@@ -6,17 +6,26 @@ function App() {
   // const [count, setCount] = useState(0);
 
   return (
-    <body className="bg-gradient-to-t from-primary to-sub h-screen">
+    <div className="bg-gradient-to-t from-primary to-sub">
       <Navbar />
-      <section id="home" className="container mx-auto my-8 flex justify-center">
+      <section
+        id="home"
+        className="container mx-auto pt-28 flex justify-center"
+      >
         <div className="container mx-10 my-8" id="cards">
           <div className="flex flex-wrap gap-6">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
             <Card />
             <Card />
           </div>
         </div>
       </section>
-    </body>
+    </div>
   );
 }
 
