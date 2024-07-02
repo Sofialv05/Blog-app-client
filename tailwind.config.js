@@ -2,7 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#3FA1C0",
+        sub: "#C05E3F",
+      },
+      fontFamily: {
+        gudea: ["Gudea", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
