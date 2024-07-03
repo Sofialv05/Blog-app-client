@@ -3,16 +3,18 @@ import Card from "../components/Card";
 import axios from "axios";
 
 export default function Home() {
+  const [titlePost, setTitlePost] = useState([]);
+
   useEffect(() => {
     axios({
       method: "GET",
       url: "https://gc.sofalvsy-web.site/pub/posts",
     })
       .then(({ data }) => {
-        console.log(data);
+        if (data.length > 0) setTitlePost(data);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <div className="bg-gradient-to-t from-primary to-sub">
       <section
@@ -21,13 +23,8 @@ export default function Home() {
       >
         <div className="container mx-10 my-8" id="cards">
           <div className="flex flex-col justify-center gap-6">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {titlePost}
+            <Card titles={titlePost} />
           </div>
         </div>
       </section>
