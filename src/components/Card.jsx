@@ -1,26 +1,22 @@
 export default function Card(props) {
-  const { titles } = props;
-  console.log(titles);
+  const { posts } = props;
+
   return (
     <>
-      {titles.map((title, index) => (
+      {posts.map((post, index) => (
         <div
           key={index}
           className="flex h-56 bg-white border border-gray-200 shadow-lg rounded-lg"
         >
           <img
-            src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJjaGl0ZWN0dXJlfGVufDB8fDB8fHww"
+            src={post.imgUrl}
             alt="Card image"
             className="w-1/4 h-auto object-cover object-center rounded-l-lg"
           />
           <div className="p-8 w-3/4 flex flex-col">
             <h5 className="block font-bold font-gudea text-3xl text-primary mb-2">
-              {title}
+              {post.title}
             </h5>
-            <p className="text-gray-700 mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
             <div className="flex justify-end mt-auto">
               <a
                 href="Detail.html"

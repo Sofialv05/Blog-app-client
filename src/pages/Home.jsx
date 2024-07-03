@@ -3,7 +3,8 @@ import Card from "../components/Card";
 import axios from "axios";
 
 export default function Home() {
-  const [titlePost, setTitlePost] = useState([]);
+  const [postData, setPostData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios({
@@ -11,11 +12,13 @@ export default function Home() {
       url: "https://gc.sofalvsy-web.site/pub/posts",
     })
       .then(({ data }) => {
-        console.log(data);
-        setTitlePost(data);
+        // console.log(data);
+        setPostData(data.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log("Error fetching data:", err);
+        setLoading(false);
       });
   }, []);
 
@@ -27,11 +30,7 @@ export default function Home() {
       >
         <div className="container mx-10 my-8" id="cards">
           <div className="flex flex-col justify-center gap-6">
-            {titlePost.length > 0 ? (
-              <Card titles={titlePost} />
-            ) : (
-              <p>Loading...</p>
-            )}
+            {loading ? <p>Loading...</p> : <Card posts={postData} />}
           </div>
         </div>
       </section>
