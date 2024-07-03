@@ -1,10 +1,8 @@
 import Card from "../components/Card";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <div className="bg-gradient-to-t from-primary to-sub">
-      <Navbar />
       <section
         id="home"
         className="container mx-auto pt-28 flex justify-center"
