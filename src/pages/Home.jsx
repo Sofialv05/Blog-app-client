@@ -11,10 +11,14 @@ export default function Home() {
       url: "https://gc.sofalvsy-web.site/pub/posts",
     })
       .then(({ data }) => {
-        if (data.length > 0) setTitlePost(data);
+        console.log(data);
+        setTitlePost(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log("Error fetching data:", err);
+      });
   }, []);
+
   return (
     <div className="bg-gradient-to-t from-primary to-sub">
       <section
@@ -23,8 +27,11 @@ export default function Home() {
       >
         <div className="container mx-10 my-8" id="cards">
           <div className="flex flex-col justify-center gap-6">
-            {titlePost}
-            <Card titles={titlePost} />
+            {titlePost.length > 0 ? (
+              <Card titles={titlePost} />
+            ) : (
+              <p>Loading...</p>
+            )}
           </div>
         </div>
       </section>
