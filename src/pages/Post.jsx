@@ -26,7 +26,7 @@ export default function Post() {
   }, []);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchPosts() {
       try {
         let { data } = await axios({
           method: "GET",
@@ -41,7 +41,7 @@ export default function Post() {
         console.error(err);
       }
     }
-    fetchData();
+    fetchPosts();
   }, []);
 
   const handleDeletePost = async (id) => {

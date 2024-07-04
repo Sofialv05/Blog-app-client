@@ -44,13 +44,13 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink
-                to={"/users"}
+                to={"/categories"}
                 className={({ isActive }) =>
                   (isActive ? "text-sub lg:underline decoration-inherit" : "") +
                   "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
                 }
               >
-                Users
+                Categories
               </NavLink>
             </li>
           </ul>
@@ -65,11 +65,23 @@ export default function Navbar() {
               handle={login}
             />
           ) : (
-            <Button
-              color={"bg-red-700 hover:bg-red-600"}
-              text={"Logout"}
-              handle={logout}
-            />
+            <div className="flex gap-6 items-center">
+              <Link
+                to={"/register"}
+                className="transition duration-300 ease-in-out hover:text-sub"
+              >
+                <Button
+                  color={"bg-green-800 hover:bg-green-700"}
+                  text={"Add Staff"}
+                  handle={""}
+                />
+              </Link>
+              <Button
+                color={"bg-red-700 hover:bg-red-600"}
+                text={"Logout"}
+                handle={logout}
+              />
+            </div>
           )}
         </div>
       </div>
