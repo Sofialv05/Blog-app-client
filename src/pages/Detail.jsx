@@ -21,15 +21,25 @@ export default function Detail() {
   }, [id]);
 
   return (
-    <main id="main" className="bg-gradient-to-t from-primary to-sub3 h-screen">
-      <div className="container bg-white mx-auto flex justify-center rounded-lg flex-col h-full">
-        <div className="container mx-10 my-8" id="content">
-          <h2 className="text-4xl">{postData.title}</h2>
-          <img src={postData.imgUrl} alt={postData.title} />
+    <main
+      id="main"
+      className="pt-28 pb-14 bg-gradient-to-t from-primary to-sub3 h-screen"
+    >
+      <div className="container bg-white mx-auto flex justify-around rounded-lg flex-col h-full">
+        <div
+          className="container flex flex-col items-center justify-between h-1/2"
+          id="content"
+        >
+          <h4 className="text-3xl text-primary font-bold">{postData.title}</h4>
+          <img
+            className="w-auto mt-10"
+            src={postData.imgUrl}
+            alt={postData.title}
+          />
         </div>
-        <di className="px-28">
+        <div className="px-28">
           <p className="text-justify">{postData.content}</p>
-        </di>
+        </div>
       </div>
     </main>
   );

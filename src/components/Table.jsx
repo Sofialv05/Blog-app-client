@@ -10,6 +10,9 @@ export default function Table({ posts }) {
             <th scope="col" className="px-6 py-3 w-20">
               ID
             </th>
+            <th scope="col" className="px-6 py-3 w-20">
+              Image
+            </th>
             <th scope="col" className="px-6 py-3 w-1/4">
               Title
             </th>
@@ -39,6 +42,9 @@ export default function Table({ posts }) {
               >
                 {++index}
               </th>
+              <td className="px-6 py-4">
+                <img src={post.imgUrl} alt={post.title} />
+              </td>
               <td className="px-6 py-4">{post.title}</td>
               <td className="px-6 py-4">{post.Author.username}</td>
               <td className="px-6 py-4">{formatDate(post.createdAt)}</td>

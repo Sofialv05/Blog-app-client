@@ -130,7 +130,7 @@ export default function Register() {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-          <SubmitButton label={"Register"} />
+          <SubmitButton text={"Register"} />
         </form>
       </div>
     </section>
