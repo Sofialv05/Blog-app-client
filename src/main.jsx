@@ -10,6 +10,7 @@ import Detail from "./pages/Detail";
 import Register from "./pages/Register";
 import Post from "./pages/Post";
 import PostForm from "./pages/PostForm";
+import UserList from "./pages/UserList";
 
 const router = createBrowserRouter([
   {
@@ -45,13 +46,21 @@ const router = createBrowserRouter([
         path: "/add-post",
         element: <PostForm />,
       },
+      {
+        path: "/edit-post/:id",
+        element: <PostForm />,
+      },
+      {
+        path: "/users",
+        element: <UserList />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="bg-gradient-to-t from-primary to-sub3 font-montserrat">
+    <div className=" font-montserrat">
       <RouterProvider router={router} />
     </div>
   </React.StrictMode>

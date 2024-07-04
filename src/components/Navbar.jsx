@@ -44,13 +44,13 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink
-                to={"#"}
+                to={"/users"}
                 className={({ isActive }) =>
                   (isActive ? "text-sub lg:underline decoration-inherit" : "") +
                   "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
                 }
               >
-                NONE
+                Users
               </NavLink>
             </li>
           </ul>

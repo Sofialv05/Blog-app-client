@@ -30,7 +30,7 @@ export default function Register() {
         },
       });
       console.log(data);
-      navigate("/cms");
+      navigate("/login");
     } catch (err) {
       console.error(err.response?.data.message);
     }

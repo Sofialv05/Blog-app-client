@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section id="home" className=" bg-gradient-to-t from-primary to-sub3">
+    <section id="home" className="">
       <div className="container mx-auto pt-28 flex justify-center">
         <div className="container mx-10 my-8" id="cards">
           <div className="flex items-center gap-20 mb-10 justify-end">

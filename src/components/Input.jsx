@@ -1,18 +1,21 @@
 import PropTypes from "prop-types";
 
-export function Input({ label }) {
+export function Input({ label, name, value, onChange }) {
   return (
     <div className="mb-5">
       <label
-        htmlFor="base-input"
-        className="block mb-2 text-sm font-medium text-gray-900"
+        htmlFor={name}
+        className="block mb-2 text-md font-medium text-gray-900"
       >
-        {label}
+        {label} :
       </label>
       <input
         type="text"
-        id="base-input"
-        className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg transition duration-150 ease-in-out focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary"
+        id={name}
+        name={name}
+        className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg transition duration-150 ease-in-out focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary"
+        value={value}
+        onChange={onChange}
       />
     </div>
   );
@@ -20,21 +23,26 @@ export function Input({ label }) {
 
 Input.propTypes = {
   label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
-export function InputLarge({ label }) {
+export function InputLarge({ label, name, value, onChange }) {
   return (
-    <div className="mb-5">
+    <div className="my-5">
       <label
-        htmlFor="large-input"
-        className="block mb-2 text-sm font-medium text-gray-900"
+        htmlFor={name}
+        className="block mb-2 text-md font-medium text-gray-900"
       >
-        {label}
+        {label} :
       </label>
-      <input
-        type="text"
-        id="large-input"
-        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg transition duration-150 ease-in-out bg-gray-50 text-base focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary"
+      <textarea
+        id={name}
+        name={name}
+        className="h-72 block w-full p-3  text-gray-900 border border-gray-300 rounded-lg transition duration-150 ease-in-out bg-gray-50 text-base focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary"
+        value={value}
+        onChange={onChange}
       />
     </div>
   );
@@ -42,4 +50,7 @@ export function InputLarge({ label }) {
 
 InputLarge.propTypes = {
   label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
