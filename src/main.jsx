@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Detail from "./pages/Detail";
 import Register from "./pages/Register";
 import Post from "./pages/Post";
+import PostForm from "./pages/PostForm";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/posts",
         element: <Post />,
+      },
+      {
+        path: "/add-post",
+        element: <PostForm />,
       },
     ],
   },

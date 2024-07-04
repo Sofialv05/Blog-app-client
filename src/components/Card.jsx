@@ -18,6 +18,10 @@ export default function Card({ posts }) {
             <h5 className="block font-bold font-gudea text-3xl text-primary mb-2">
               {post.title}
             </h5>
+            <p className="mt-3">
+              {post.content.slice(0, 200)}
+              <span className="text-gray-400"> —————Read More</span>
+            </p>
             <div className="flex justify-end mt-auto">
               <Link
                 to={"/detail/" + post.id}

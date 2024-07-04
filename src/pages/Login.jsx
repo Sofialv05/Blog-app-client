@@ -1,6 +1,7 @@
 import axios from "../util/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SubmitButton } from "../components/Button";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ export default function Login() {
       });
       // console.log(data);
       localStorage.setItem("token", data.access_token);
-      navigate("/cms");
+      navigate("/posts");
     } catch (err) {
       console.error(err.response?.data.message);
     }
@@ -70,12 +71,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button
-            type="submit"
-            className="w-full text-white transition ease-in-out duration-300 bg-primary hover:bg-sub font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-          >
-            Login
-          </button>
+          <SubmitButton label={"Login"} />
         </form>
       </div>
     </section>

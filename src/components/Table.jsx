@@ -3,7 +3,7 @@ import formatDate from "../util/formatDate";
 
 export default function Table({ posts }) {
   return (
-    <div className="w-full py-36 ">
+    <div className="w-full py-20 ">
       <table className="w-full text-sm  text-gray-500 border-collapse">
         <thead className="text-md text-sub3 uppercase bg-sub ">
           <tr>

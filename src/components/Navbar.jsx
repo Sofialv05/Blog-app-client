@@ -40,37 +40,47 @@ export default function Navbar() {
                 "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
               }
             >
-              Log Out
+              NONE
             </NavLink>
           </li>
         </ul>
 
-        <div className="flex items-center">
-          <input
-            type="text"
-            name="keyword"
-            id="search"
-            placeholder="Search..."
-            className=" transition duration-150 ease-in-out block w-60 p-2 pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary px-4 py-2"
-          />
-          <div className="pl-3">
-            <a href="">
-              <svg
-                className="w-4 h-4 text-gray-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </a>
+        <div className="flex items-center gap-20">
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              name="keyword"
+              id="search"
+              placeholder="Search..."
+              className=" transition duration-150 ease-in-out block w-60 p-2 pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary px-4 py-2"
+            />
+            <div className="pl-3">
+              <a href="">
+                <svg
+                  className="w-4 h-4 text-gray-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <NavLink
+              to={"#"}
+              className=" bg-red-700 text-white rounded-md px-4 py-2 hover:bg-red-800  duration-300"
+            >
+              Log Out
+            </NavLink>
           </div>
         </div>
       </div>
