@@ -8,7 +8,6 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Detail from "./pages/Detail";
 import Register from "./pages/Register";
-import ContentManagement from "./pages/CMS";
 import Post from "./pages/Post";
 
 const router = createBrowserRouter([
@@ -40,10 +39,6 @@ const router = createBrowserRouter([
       {
         path: "/posts",
         element: <Post />,
-      },
-      {
-        path: "/cms",
-        element: <ContentManagement />,
       },
     ],
   },

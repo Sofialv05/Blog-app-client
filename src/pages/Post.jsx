@@ -8,11 +8,11 @@ export default function Post() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const token = localStorage.getItem("token");
-        const splitToken = token.split(".");
-        const payload = JSON.parse(atob(splitToken[1]));
-        // console.log(payload);
-        const authorId = payload.id;
+        // const token = localStorage.getItem("token");
+        // const splitToken = token.split(".");
+        // const payload = JSON.parse(atob(splitToken[1]));
+        // // console.log(payload);
+        // const authorId = payload.id;
         let { data } = await axios({
           method: "GET",
           url: "/posts",
@@ -20,7 +20,7 @@ export default function Post() {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         });
-        data = data.filter((e) => e.AuthorId == authorId);
+        // data = data.filter((e) => e.AuthorId == authorId);
         setPostData(data);
         console.log(data);
       } catch (err) {

@@ -40,7 +40,7 @@ export default function Navbar() {
                 "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
               }
             >
-              Authors
+              Log Out
             </NavLink>
           </li>
         </ul>
