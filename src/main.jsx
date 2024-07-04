@@ -6,11 +6,17 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Detail from "./pages/Detail";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     element: (
@@ -26,8 +32,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/register",
-        element: <Home />,
+        path: "/detail/:id",
+        element: <Detail />,
       },
     ],
   },
@@ -35,7 +41,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="bg-gradient-to-t from-primary to-sub font-gudea">
+    <div className="bg-gradient-to-t from-primary to-sub font-montserrat">
       <RouterProvider router={router} />
     </div>
   </React.StrictMode>

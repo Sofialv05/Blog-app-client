@@ -1,21 +1,25 @@
+import { NavLink } from "react-router-dom";
+
 export default function Navbar() {
   return (
-    <nav className="bg-white flex items-center justify-center py-4 px-4 fixed top-0 right-0 left-0 shadow-lg shadow-grey-700 font-gudea tracking-wide">
+    <nav className="bg-white flex items-center justify-center py-4 px-4 fixed top-0 right-0 left-0 shadow-lg shadow-grey-700">
       <div className="flex mx-20 items-center justify-between w-full">
         <div className="flex items-center">
-          <a href="#" className="text-primary text-3xl font-bold">
+          <a href="#" className="text-primary text-3xl font-semibold">
             Random Blog
           </a>
         </div>
-
-        <ul className="flex space-x-6 text-primary text-lg">
+        <ul className="flex space-x-6 text-lg font-bold text-primary">
           <li>
-            <a
-              href="#"
-              className="transition duration-300 ease-in-out hover:text-sub"
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                (isActive ? "text-sub lg:underline decoration-inherit" : "") +
+                "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
+              }
             >
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
             <a

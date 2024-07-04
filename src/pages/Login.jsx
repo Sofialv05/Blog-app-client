@@ -1,8 +1,36 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      let { data } = await axios({
+        method: "POST",
+        url: "https://gc.sofalvsy-web.site/login",
+        data: {
+          email,
+          password,
+        },
+      });
+      // console.log(data);
+      localStorage.setItem("token", data.access_token);
+      navigate("/register");
+    } catch (err) {
+      console.error(err.response?.data.message);
+    }
+  };
+
   return (
     <section id="login" className="h-screen flex items-center justify-center">
       <div className="w-full max-w-md p-8 bg-white border-gray-200 rounded-lg shadow-black ">
-        <form className="space-y-8" action="#">
+        <form className="space-y-8" onSubmit={handleLogin}>
           <h5 className="text-2xl font-extrabold text-center text-primary tracking-wider">
             Sign in
           </h5>
@@ -20,6 +48,8 @@ export default function Login() {
               className="bg-gray-50 border border-gray-300 text-primary text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary block w-full p-2.5"
               placeholder="Your Email"
               required=""
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -36,6 +66,8 @@ export default function Login() {
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-primary text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary block w-full p-2.5"
               required=""
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button

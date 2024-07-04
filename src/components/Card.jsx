@@ -1,6 +1,7 @@
-export default function Card(props) {
-  const { posts } = props;
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
+export default function Card({ posts }) {
   return (
     <>
       {posts.map((post, index) => (
@@ -18,7 +19,8 @@ export default function Card(props) {
               {post.title}
             </h5>
             <div className="flex justify-end mt-auto">
-              <a
+              <Link
+                to={"/detail/" + post.id}
                 href="Detail.html"
                 className="inline-flex items-center justify-center bg-primary rounded-lg px-5 py-2 text-white font-medium font-gudea hover:bg-sub focus:ring-4 focus:outline-none focus:ring-sub transition ease-in-out duration-300 hover:shadow-lg"
               >
@@ -38,7 +40,7 @@ export default function Card(props) {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -46,3 +48,7 @@ export default function Card(props) {
     </>
   );
 }
+
+Card.propTypes = {
+  posts: PropTypes.array,
+};

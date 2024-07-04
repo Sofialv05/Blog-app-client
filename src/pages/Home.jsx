@@ -23,17 +23,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-t from-primary to-sub">
-      <section
-        id="home"
-        className="container mx-auto pt-28 flex justify-center"
-      >
+    <section id="home" className=" bg-gradient-to-t from-primary to-sub">
+      <div className="container mx-auto pt-28 flex justify-center">
         <div className="container mx-10 my-8" id="cards">
           <div className="flex flex-col justify-center gap-6">
             {loading ? <p>Loading...</p> : <Card posts={postData} />}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

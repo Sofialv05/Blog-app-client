@@ -8,7 +8,7 @@ export default {
         sub: "#C05E3F",
       },
       fontFamily: {
-        gudea: ["Gudea", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },
