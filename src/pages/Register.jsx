@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../util/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,7 @@ export default function Register() {
     try {
       let { data } = await axios({
         method: "POST",
-        url: "https://gc.sofalvsy-web.site/add-user",
+        url: "/add-user",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -29,7 +29,7 @@ export default function Register() {
         },
       });
       console.log(data);
-      navigate("/");
+      navigate("/cms");
     } catch (err) {
       console.error(err.response?.data.message);
     }

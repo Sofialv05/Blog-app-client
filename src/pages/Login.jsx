@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../util/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export default function Login() {
     try {
       let { data } = await axios({
         method: "POST",
-        url: "https://gc.sofalvsy-web.site/login",
+        url: "/login",
         data: {
           email,
           password,
@@ -21,7 +21,7 @@ export default function Login() {
       });
       // console.log(data);
       localStorage.setItem("token", data.access_token);
-      navigate("/register");
+      navigate("/cms");
     } catch (err) {
       console.error(err.response?.data.message);
     }

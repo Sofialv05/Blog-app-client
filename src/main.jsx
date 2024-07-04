@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Detail from "./pages/Detail";
 import Register from "./pages/Register";
+import ContentManagement from "./pages/CMS";
+import Post from "./pages/Post";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +37,21 @@ const router = createBrowserRouter([
         path: "/detail/:id",
         element: <Detail />,
       },
+      {
+        path: "/posts",
+        element: <Post />,
+      },
+      {
+        path: "/cms",
+        element: <ContentManagement />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="bg-gradient-to-t from-primary to-sub font-montserrat">
+    <div className="bg-gradient-to-t from-primary to-sub3 font-montserrat">
       <RouterProvider router={router} />
     </div>
   </React.StrictMode>

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../util/axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export default function Detail() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "https://gc.sofalvsy-web.site/pub/posts/" + id,
+      url: "/pub/posts/" + id,
     })
       .then(({ data }) => {
         console.log(data);
@@ -21,7 +21,7 @@ export default function Detail() {
   }, [id]);
 
   return (
-    <main id="main" className="bg-gradient-to-t from-primary to-sub h-screen">
+    <main id="main" className="bg-gradient-to-t from-primary to-sub3 h-screen">
       <div className="container bg-white mx-auto flex justify-center rounded-lg flex-col h-full">
         <div className="container mx-10 my-8" id="content">
           <h2 className="text-4xl">{postData.title}</h2>

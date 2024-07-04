@@ -22,20 +22,26 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className=" transition duration-300 ease-in-out hover:text-sub"
+            <NavLink
+              to={"/posts"}
+              className={({ isActive }) =>
+                (isActive ? "text-sub lg:underline decoration-inherit" : "") +
+                "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
+              }
             >
               Posts
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className=" transition duration-300 ease-in-out hover:text-sub"
+            <NavLink
+              to={"/cms"}
+              className={({ isActive }) =>
+                (isActive ? "text-sub lg:underline decoration-inherit" : "") +
+                "transition duration-300 ease-in-out hover:text-sub hover:underline decoration-inherit"
+              }
             >
               Authors
-            </a>
+            </NavLink>
           </li>
         </ul>
 
