@@ -2,6 +2,7 @@ import axios from "../util/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitButton } from "../components/Button";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -33,6 +34,16 @@ export default function Register() {
       navigate("/login");
     } catch (err) {
       console.error(err.response?.data.message);
+      toast.error(err.response?.data.message || err.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 

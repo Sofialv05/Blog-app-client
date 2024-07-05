@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "../components/Card";
 import axios from "../util/axios";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [postData, setPostData] = useState([]);
@@ -18,8 +19,18 @@ export default function Home() {
       })
       .catch((err) => {
         console.log("Error fetching data:", err);
-        setLoading(false);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
+    setLoading(false);
   }, []);
 
   return (

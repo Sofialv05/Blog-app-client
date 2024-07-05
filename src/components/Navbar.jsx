@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="flex mx-20 items-center justify-between w-full">
         <div className="flex items-center">
           <Link to={"/"} className="text-primary text-3xl font-semibold">
-            Blog
+            Random Blog
           </Link>
         </div>
         {localStorage.getItem("token") ? (
@@ -77,7 +77,7 @@ export default function Navbar() {
                 />
               </Link>
               <Button
-                color={"bg-red-700 hover:bg-red-600"}
+                color={"bg-red-600 hover:bg-red-700"}
                 text={"Logout"}
                 handle={logout}
               />

@@ -4,6 +4,7 @@ import { Input, InputLarge } from "../components/Input";
 import axios from "../util/axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Select from "../components/Select";
+import { toast } from "react-toastify";
 
 export default function PostForm() {
   const navigate = useNavigate();
@@ -30,6 +31,16 @@ export default function PostForm() {
         setCategories(data);
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     };
     fetchCategory();
@@ -49,6 +60,16 @@ export default function PostForm() {
         console.log(data);
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     };
     id && fetchPosts();
@@ -69,6 +90,16 @@ export default function PostForm() {
       navigate("/posts");
     } catch (err) {
       console.error(err);
+      toast.error(err.response?.data.message || err.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 

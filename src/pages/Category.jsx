@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CategoryTable } from "../components/Table";
 import axios from "../util/axios";
+import { toast } from "react-toastify";
 
 export default function Category() {
   const [categories, setCategories] = useState([]);
@@ -19,28 +20,48 @@ export default function Category() {
         setCategories(data);
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     };
     fetchCategories();
   }, []);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchPosts() {
       try {
         let { data } = await axios({
           method: "GET",
-          url: "/posts",
+          url: "/pub/posts",
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         });
-        setPostData(data);
+        setPostData(data.data);
         console.log(data);
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     }
-    fetchData();
+    fetchPosts();
   }, []);
   return (
     <section id="Posts" className="container mx-auto my-auto">

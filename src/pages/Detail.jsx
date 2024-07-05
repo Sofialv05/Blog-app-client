@@ -2,6 +2,7 @@ import axios from "../util/axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import formatDate from "../util/formatDate";
+import { toast } from "react-toastify";
 
 export default function Detail() {
   const { id } = useParams();
@@ -18,6 +19,16 @@ export default function Detail() {
       })
       .catch((err) => {
         console.log("Error fetching data:", err);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   }, [id]);
 

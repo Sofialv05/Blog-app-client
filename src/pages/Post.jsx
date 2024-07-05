@@ -1,7 +1,9 @@
+import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import { Table } from "../components/Table";
 import axios from "../util/axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Post() {
   const [categories, setCategories] = useState([]);
@@ -20,6 +22,16 @@ export default function Post() {
         setCategories(data);
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     };
     fetchCategory();
@@ -39,6 +51,17 @@ export default function Post() {
         console.log(data);
       } catch (err) {
         console.error(err);
+        // Swal.fire(err.response?.data.message || err.message);
+        toast.error(err.response?.data.message || err.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     }
     fetchPosts();
@@ -46,16 +69,41 @@ export default function Post() {
 
   const handleDeletePost = async (id) => {
     try {
-      await axios({
-        method: "DELETE",
-        url: "/posts/" + id,
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this post!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#4682A9",
+        cancelButtonColor: "#dc2626",
+        confirmButtonText: "Yes, delete it!",
       });
-      window.location.reload();
+
+      console.log(result);
+      if (result.isConfirmed) {
+        await axios({
+          method: "DELETE",
+          url: "/posts/" + id,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+
+        window.location.reload();
+      }
     } catch (err) {
       console.error(err);
+      // Swal.fire(err.response?.data.message || err.message);
+      toast.error(err.response?.data.message || err.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
