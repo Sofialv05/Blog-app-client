@@ -37,7 +37,7 @@ export default function Home() {
             size: pageSize,
             number: currentPage,
           },
-          sort,
+          sort: sort,
           keyword: search,
         },
       });
@@ -105,7 +105,7 @@ export default function Home() {
       <div className="container mx-6 my-8" id="cards">
         <div className="flex items-center gap-20 mb-10 bg-primary rounded-md py-4 px-4 shadow-md fixed top-30 right-36 left-36 shadow-gray-600 z-10">
           <PageSize pageSize={pageSize} setPageSize={setPageSize} />
-          <Sort />
+          <Sort setSort={setSort} />
           <Search
             search={search}
             setSearch={setSearch}
