@@ -2,23 +2,81 @@ import { useState, useEffect } from "react";
 import Card from "../components/Card";
 import axios from "../util/axios";
 import { toast } from "react-toastify";
+import PaginationButton from "../components/PaginationButton";
+import Search from "../components/Search";
+import PageSize from "../components/PageSize";
+import Sort from "../components/Sort";
 
 export default function Home() {
-  const [postData, setPostData] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+  //params
+  const [search, setSearch] = useState("");
+  const [pageSize, setPageSize] = useState(4);
+  const [sort, setSort] = useState("title");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  //set pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginationOption, setPaginationOption] = useState({
+    totalData: 0,
+    totalPage: 1,
+    dataPerPage: 0,
+  });
+
+  const fetchPosts = async () => {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "/pub/posts",
+        params: {
+          filter: selectedCategory,
+          page: {
+            size: pageSize,
+            number: currentPage,
+          },
+          sort,
+          keyword: search,
+        },
+      });
+      // console.log(data);
+      let { totalData, totalPage, dataPerPage } = data;
+      setPosts(data.data);
+      // console.log(data);
+      setPaginationOption(() => ({ totalData, totalPage, dataPerPage }));
+      setLoading(false);
+    } catch (err) {
+      console.log("Error fetching data:", err);
+      toast.error(err.response?.data.message || err.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/pub/posts",
-    })
-      .then(({ data }) => {
-        // console.log(data);
-        setPostData(data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log("Error fetching data:", err);
+    fetchPosts();
+  }, [selectedCategory, pageSize, currentPage, sort]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        let { data } = await axios({
+          method: "GET",
+          url: "/pub/categories",
+        });
+        setCategories(data);
+      } catch (err) {
+        console.error(err);
         toast.error(err.response?.data.message || err.message, {
           position: "top-center",
           autoClose: 5000,
@@ -29,48 +87,44 @@ export default function Home() {
           progress: undefined,
           theme: "light",
         });
-      });
-    setLoading(false);
+      }
+    };
+    fetchCategories();
   }, []);
 
+  const submitSearch = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(1);
+    } else {
+      fetchPosts();
+    }
+  };
+
   return (
-    <section id="home" className="">
-      <div className="container mx-auto pt-28 flex justify-center">
-        <div className="container mx-10 my-8" id="cards">
-          <div className="flex items-center gap-20 mb-10 justify-end">
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                name="keyword"
-                id="search"
-                placeholder="Search..."
-                className=" transition duration-150 ease-in-out block w-60 p-2 pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:outline-none focus:ring-primary focus:ring-offset-0 focus:border-primary px-4 py-2"
-              />
-              <div className="pl-3">
-                <a href="">
-                  <svg
-                    className="w-4 h-4 text-gray-500"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col justify-center gap-6">
-            {loading ? <p>Loading...</p> : <Card posts={postData} />}
-          </div>
+    <section id="home" className="container mx-auto pt-20 flex justify-center">
+      <div className="container mx-6 my-8" id="cards">
+        <div className="flex items-center gap-20 mb-10 bg-primary rounded-md py-4 px-4 shadow-md fixed top-30 right-36 left-36 shadow-gray-600 z-10">
+          <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+          <Sort />
+          <Search
+            search={search}
+            setSearch={setSearch}
+            submitSearch={submitSearch}
+          />
         </div>
+        <div className="flex flex-col justify-center gap-6 mt-28">
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            posts.map((post, index) => <Card post={post} key={index} />)
+          )}
+        </div>
+        <div className="w-full my-16"></div>
+        <PaginationButton
+          paginationOption={paginationOption}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </section>
   );

@@ -10,8 +10,7 @@ export default function PostForm() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [categories, setCategories] = useState([]);
-  const [post, setPost] = useState({});
-  const [newPost, setNewPost] = useState({
+  const [post, setPost] = useState({
     title: "",
     content: "",
     imgUrl: "",
@@ -84,7 +83,7 @@ export default function PostForm() {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        data: newPost,
+        data: post,
       });
       console.log(data);
       navigate("/posts");
@@ -103,27 +102,9 @@ export default function PostForm() {
     }
   };
 
-  // const handleEditPost = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     let { data } = await axios({
-  //       method: "PUT",
-  //       url: "/posts/" + id,
-  //       headers: {
-  //         Authorization: "Bearer " + localStorage.getItem("token"),
-  //       },
-  //       data: newPost,
-  //     });
-  //     console.log(data);
-  //     navigate("/posts");
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
-    setNewPost({ ...newPost, [name]: value });
+    setPost({ ...post, [name]: value });
   };
 
   return (

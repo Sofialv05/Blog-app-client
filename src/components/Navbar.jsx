@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white flex items-center justify-center py-4 px-4 fixed top-0 right-0 left-0 shadow-lg shadow-grey-700 z-10">
+    <nav className="bg-white flex items-center justify-center py-4 px-4 fixed top-0 right-0 left-0 shadow-md shadow-gray-500 z-10">
       <div className="flex mx-20 items-center justify-between w-full">
         <div className="flex items-center">
           <Link to={"/"} className="text-primary text-3xl font-semibold">
