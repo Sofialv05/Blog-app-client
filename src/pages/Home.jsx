@@ -6,6 +6,7 @@ import PaginationButton from "../components/PaginationButton";
 import Search from "../components/Search";
 import PageSize from "../components/PageSize";
 import Sort from "../components/Sort";
+import CategoryFilter from "../components/CategoryFilter";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -103,15 +104,24 @@ export default function Home() {
   return (
     <section id="home" className="container mx-auto pt-20 flex justify-center">
       <div className="container mx-6 my-8" id="cards">
-        <div className="flex items-center gap-20 mb-10 bg-primary rounded-md py-4 px-4 shadow-md fixed top-30 right-36 left-36 shadow-gray-600 z-10">
-          <PageSize pageSize={pageSize} setPageSize={setPageSize} />
-          <Sort setSort={setSort} />
-          <Search
-            search={search}
-            setSearch={setSearch}
-            submitSearch={submitSearch}
+        <div className="flex flex-col items-center mb-10 gap-5 bg-primary rounded-md py-4 px-8 shadow-md fixed top-30 right-36 left-36 shadow-gray-600 z-10">
+          <div className="flex justify-items-center  gap-20 w-full">
+            <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+            <Sort setSort={setSort} />
+            <Search
+              search={search}
+              setSearch={setSearch}
+              submitSearch={submitSearch}
+            />
+          </div>
+
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            categories={categories}
           />
         </div>
+
         <div className="flex flex-col justify-center gap-6 mt-28">
           {loading ? (
             <p>Loading...</p>

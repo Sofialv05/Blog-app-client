@@ -8,6 +8,7 @@ import Post from "./pages/Post";
 import PostForm from "./pages/PostForm";
 import Category from "./pages/Category";
 import MainLayout from "./Layout/MainLayout";
+import ImageForm from "./pages/ImageForm";
 
 const isNotLogin = () => {
   const token = localStorage.getItem("token");
@@ -61,6 +62,11 @@ export const router = createBrowserRouter([
         loader: isNotLogin,
         path: "/edit-post/:id",
         element: <PostForm />,
+      },
+      {
+        loader: isNotLogin,
+        path: "/edit-image/:id",
+        element: <ImageForm />,
       },
       {
         loader: isNotLogin,
