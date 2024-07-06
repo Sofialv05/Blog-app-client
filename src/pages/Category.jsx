@@ -64,7 +64,7 @@ export default function Category() {
     fetchPosts();
   }, []);
   return (
-    <section id="Posts" className="container mx-auto my-auto">
+    <section id="Posts" className="container mx-auto my-auto h-screen">
       <div className="pt-36 flex justify-center">
         <CategoryTable posts={postData} categories={categories} />
       </div>
