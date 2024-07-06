@@ -5,11 +5,13 @@ import { SubmitButton } from "../components/Button";
 import { toast } from "react-toastify";
 
 export default function Register() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [address, setAddress] = useState("");
+  const [newUser, setNewUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    address: "",
+  });
 
   const navigate = useNavigate();
 
@@ -22,13 +24,7 @@ export default function Register() {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        data: {
-          username,
-          email,
-          password,
-          phoneNumber,
-          address,
-        },
+        data: newUser,
       });
       navigate("/login");
     } catch (err) {
@@ -44,6 +40,11 @@ export default function Register() {
         theme: "light",
       });
     }
+  };
+
+  const handleChangeInput = (event) => {
+    const { name, value } = event.target;
+    setNewUser({ ...newUser, [name]: value });
   };
 
   return (
@@ -66,8 +67,8 @@ export default function Register() {
               id="username"
               className="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-sub focus:border-sub block w-full p-2.5"
               placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={newUser.username}
+              onChange={handleChangeInput}
             />
           </div>
           <div>
@@ -84,8 +85,8 @@ export default function Register() {
               className="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-sub focus:border-sub block w-full p-2.5"
               placeholder="Email"
               required=""
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={newUser.email}
+              onChange={handleChangeInput}
             />
           </div>
           <div>
@@ -102,8 +103,8 @@ export default function Register() {
               placeholder="Password"
               className="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-sub focus:border-sub block w-full p-2.5"
               required=""
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={newUser.password}
+              onChange={handleChangeInput}
             />
           </div>
           <div>
@@ -119,8 +120,8 @@ export default function Register() {
               id="phoneNumber"
               placeholder="Phone Number"
               className="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-sub focus:border-sub block w-full p-2.5"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={newUser.phoneNumber}
+              onChange={handleChangeInput}
             />
           </div>
           <div>
@@ -136,8 +137,8 @@ export default function Register() {
               id="address"
               placeholder="Address"
               className="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-sub focus:border-sub block w-full p-2.5"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              value={newUser.address}
+              onChange={handleChangeInput}
             />
           </div>
           <SubmitButton text={"Register"} />
