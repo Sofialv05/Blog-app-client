@@ -19,7 +19,7 @@ export default function Navbar() {
           </Link>
         </div>
         {localStorage.getItem("token") ? (
-          <ul className="flex space-x-6 text-lg font-bold text-primary">
+          <ul className="flex space-x-6 text-lg font-bold text-primary ">
             <li>
               <NavLink
                 to={"/"}

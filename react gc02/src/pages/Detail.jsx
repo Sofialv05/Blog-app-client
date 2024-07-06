@@ -9,15 +9,14 @@ export default function Detail() {
   const [postData, setPostData] = useState({});
 
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/pub/posts/" + id,
-    })
-      .then(({ data }) => {
-        console.log(data);
+    const fetchPosts = async () => {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: "/pub/posts/" + id,
+        });
         setPostData(data);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.err(err);
         toast.error(err.response?.data.message || err.message, {
           position: "top-center",
@@ -29,7 +28,9 @@ export default function Detail() {
           progress: undefined,
           theme: "light",
         });
-      });
+      }
+    };
+    fetchPosts();
   }, [id]);
 
   return (
@@ -41,7 +42,7 @@ export default function Detail() {
         >
           <h4 className="text-3xl text-primary font-bold">{postData.title}</h4>
           <img
-            className="w-auto mt-10"
+            className="w-1/3 mt-10"
             src={postData.imgUrl}
             alt={postData.title}
           />

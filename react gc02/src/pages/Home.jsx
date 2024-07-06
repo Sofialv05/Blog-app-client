@@ -64,7 +64,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchPosts();
-  }, [selectedCategory, pageSize, currentPage, sort]);
+  }, [selectedCategory, pageSize, currentPage, sort, search]);
 
   useEffect(() => {
     const fetchCategories = async () => {
