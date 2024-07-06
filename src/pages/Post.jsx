@@ -48,10 +48,8 @@ export default function Post() {
           },
         });
         setPostData(data);
-        console.log(data);
       } catch (err) {
         console.error(err);
-        // Swal.fire(err.response?.data.message || err.message);
         toast.error(err.response?.data.message || err.message, {
           position: "top-center",
           autoClose: 5000,
@@ -79,7 +77,6 @@ export default function Post() {
         confirmButtonText: "Yes, delete it!",
       });
 
-      console.log(result);
       if (result.isConfirmed) {
         await axios({
           method: "DELETE",
@@ -93,7 +90,6 @@ export default function Post() {
       }
     } catch (err) {
       console.error(err);
-      // Swal.fire(err.response?.data.message || err.message);
       toast.error(err.response?.data.message || err.message, {
         position: "top-center",
         autoClose: 5000,

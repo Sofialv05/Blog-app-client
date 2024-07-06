@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 export default function CategoryFilter({ setSelectedCategory, categories }) {
   const handleFilter = (e) => {
     setSelectedCategory(e.target.value);
-    // console.log(e.target.value);
   };
 
   return (

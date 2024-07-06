@@ -18,7 +18,7 @@ export default function Detail() {
         setPostData(data);
       })
       .catch((err) => {
-        console.log("Error fetching data:", err);
+        console.err(err);
         toast.error(err.response?.data.message || err.message, {
           position: "top-center",
           autoClose: 5000,

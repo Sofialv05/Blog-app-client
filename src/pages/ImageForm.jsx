@@ -2,12 +2,13 @@ import { useState } from "react";
 import axios from "../util/axios";
 import { useParams } from "react-router-dom";
 import { SubmitButton } from "../components/Button";
+import { toast } from "react-toastify";
 
 export default function ImageForm() {
-  //   const navigate = useNavigate();
   const { id } = useParams();
   const [post, setPost] = useState({});
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useState(() => {
     const fetchImage = async () => {
@@ -34,16 +35,28 @@ export default function ImageForm() {
     formData.append("image", file);
 
     try {
-      const { data } = await axios.patch(`/posts/${id}/img`, formData, {
+      setLoading(true);
+      await axios.patch(`/posts/${id}/img`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
-      console.log(data);
       window.location.reload();
+      setLoading(false);
     } catch (err) {
       console.error(err);
+      toast.error(err.response?.data.message || err.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setLoading(false);
     }
   };
 
@@ -65,7 +78,11 @@ export default function ImageForm() {
           <h4 className="text-xl mb-4 text-sub font-semibold">select file:</h4>
           <div className="flex items-center gap-8 flex-col">
             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-            <SubmitButton text={"Upload File"} />
+            {loading ? (
+              <SubmitButton text={"Uploading... Please wait..."} />
+            ) : (
+              <SubmitButton text={"Upload File"} />
+            )}
           </div>
         </form>
       </div>

@@ -56,7 +56,6 @@ export default function PostForm() {
           },
         });
         setPost(data);
-        console.log(data);
       } catch (err) {
         console.error(err);
         toast.error(err.response?.data.message || err.message, {
@@ -77,7 +76,7 @@ export default function PostForm() {
   const handleCreatePost = async (event) => {
     event.preventDefault();
     try {
-      let { data } = await axios({
+      await axios({
         method: id ? "PUT" : "POST",
         url: id ? `/posts/${id}` : "/posts",
         headers: {
@@ -85,7 +84,6 @@ export default function PostForm() {
         },
         data: post,
       });
-      console.log(data);
       navigate("/posts");
     } catch (err) {
       console.error(err);

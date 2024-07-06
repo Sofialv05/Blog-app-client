@@ -21,11 +21,10 @@ export default function Login() {
           password,
         },
       });
-      // console.log(data);
       localStorage.setItem("token", data.access_token);
       navigate("/posts");
     } catch (err) {
-      console.error(err.response?.data.message);
+      console.error(err);
       toast.error(err.response?.data.message || err.message, {
         position: "top-center",
         autoClose: 5000,

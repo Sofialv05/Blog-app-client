@@ -16,7 +16,7 @@ export default function Register() {
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
-      let { data } = await axios({
+      await axios({
         method: "POST",
         url: "/add-user",
         headers: {
@@ -30,10 +30,9 @@ export default function Register() {
           address,
         },
       });
-      console.log(data);
       navigate("/login");
     } catch (err) {
-      console.error(err.response?.data.message);
+      console.error(err);
       toast.error(err.response?.data.message || err.message, {
         position: "top-center",
         autoClose: 5000,

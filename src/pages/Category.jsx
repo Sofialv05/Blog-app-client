@@ -19,7 +19,7 @@ export default function Category() {
         });
         setCategories(data);
       } catch (err) {
-        console.error(err);
+        console.err(err);
         toast.error(err.response?.data.message || err.message, {
           position: "top-center",
           autoClose: 5000,
@@ -46,9 +46,8 @@ export default function Category() {
           },
         });
         setPostData(data.data);
-        console.log(data);
       } catch (err) {
-        console.error(err);
+        console.err(err);
         toast.error(err.response?.data.message || err.message, {
           position: "top-center",
           autoClose: 5000,
