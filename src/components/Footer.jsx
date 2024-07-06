@@ -1,15 +1,15 @@
 export default function Footer() {
   return (
     <footer>
-      <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-        <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-          © 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights
+      <div className="px-4 py-6 bg-white  md:flex md:items-center md:justify-between mt-8">
+        <span className="text-sm text-primary font-medium">
+          © 2024 <a href="https://flowbite.com/">Random™</a>. All Rights
           Reserved.
         </span>
         <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
           <a
             href="#"
-            className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="text-primary hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-4 h-4"
@@ -28,7 +28,7 @@ export default function Footer() {
           </a>
           <a
             href="#"
-            className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="text-primary hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-4 h-4"
@@ -43,7 +43,7 @@ export default function Footer() {
           </a>
           <a
             href="#"
-            className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="text-primary hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-4 h-4"
@@ -62,7 +62,7 @@ export default function Footer() {
           </a>
           <a
             href="#"
-            className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="text-primary hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-4 h-4"
@@ -81,7 +81,7 @@ export default function Footer() {
           </a>
           <a
             href="#"
-            className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="text-primary hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-4 h-4"
