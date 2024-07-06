@@ -104,24 +104,27 @@ export default function Home() {
   return (
     <section id="home" className="container mx-auto pt-20 flex justify-center">
       <div className="container mx-6 my-8" id="cards">
-        <div className="flex flex-col items-center mb-10 gap-5 bg-primary rounded-md py-4 px-8 shadow-md fixed top-30 right-36 left-36 shadow-gray-600 z-10">
-          <div className="flex justify-items-center  gap-20 w-full">
+        <div className="grid grid-cols-11 gap-4 items-center mb-10 bg-primary rounded-md py-4 px-8 shadow-md fixed top-30 right-36 left-36 shadow-gray-600 z-10">
+          <div className="col-span-2">
             <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+          </div>
+          <div className="col-span-3">
+            <CategoryFilter
+              setSelectedCategory={setSelectedCategory}
+              categories={categories}
+            />
+          </div>
+          <div className="col-span-1">
             <Sort setSort={setSort} />
+          </div>
+          <div className="col-span-5 ml-7 mr-5">
             <Search
               search={search}
               setSearch={setSearch}
               submitSearch={submitSearch}
             />
           </div>
-
-          <CategoryFilter
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            categories={categories}
-          />
         </div>
-
         <div className="flex flex-col justify-center gap-6 mt-28">
           {loading ? (
             <p>Loading...</p>

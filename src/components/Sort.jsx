@@ -6,11 +6,11 @@ export default function Sort({ setSort }) {
   return (
     <Menu as="div" className="relative inline-block text-left w-60">
       <div>
-        <MenuButton className="inline-flex w-40 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-500 shadow-sm hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-sub2 focus:ring-offset-0 focus:border-sub2">
+        <MenuButton className="inline-flex w-28 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-500 shadow-sm hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-sub2 focus:ring-offset-0 focus:border-sub2">
           Sort by
           <ChevronDownIcon
             aria-hidden="true"
-            className="ml-5 h-5 w-5 text-gray-400"
+            className=" h-5 w-5 text-gray-400"
           />
         </MenuButton>
       </div>

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "../util/axios";
-import { useNavigate, useParams } from "react-router-dom";
-import { Button, SubmitButton } from "../components/Button";
+import { useParams } from "react-router-dom";
+import { SubmitButton } from "../components/Button";
 
 export default function ImageForm() {
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const { id } = useParams();
   const [post, setPost] = useState({});
   const [file, setFile] = useState(null);
@@ -40,6 +40,7 @@ export default function ImageForm() {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
+      console.log(data);
       window.location.reload();
     } catch (err) {
       console.error(err);

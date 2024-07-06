@@ -13,7 +13,7 @@ export default function Search({ search, setSearch, submitSearch }) {
         name="keyword"
         id="keyword"
         placeholder="Search by title"
-        className="w-1/3 transition duration-150 ease-in-out block  p-2 pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:outline-none focus:ring-sub2 focus:ring-offset-0 focus:border-sub2 px-4 py-2"
+        className="w-full transition duration-150 ease-in-out block py-2 pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:outline-none focus:ring-sub2 focus:ring-offset-0 focus:border-sub2 px-4"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
